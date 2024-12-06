@@ -1,0 +1,37 @@
+/data/marg/abhishek/CoMeT/common/user/sync_api.o /data/marg/abhishek/CoMeT/common/user/sync_api.d: $(wildcard /data/marg/abhishek/CoMeT/common/user/sync_api.cc \
+ /data/marg/abhishek/CoMeT/common/system/simulator.h \
+ /data/marg/abhishek/CoMeT/common/misc/config.h \
+ /data/marg/abhishek/CoMeT/common/misc/fixed_types.h \
+ /data/marg/abhishek/CoMeT/common/system/clock_skew_minimization_object.h \
+ /data/marg/abhishek/CoMeT/common/misc/fixed_types.h \
+ /data/marg/abhishek/CoMeT/common/misc/subsecond_time.h \
+ /data/marg/abhishek/CoMeT/common/misc/lock.h \
+ /data/marg/abhishek/CoMeT/common/misc/itostr.h \
+ /data/marg/abhishek/CoMeT/common/misc/subsecond_time_c.h \
+ /data/marg/abhishek/CoMeT/common/misc/log.h \
+ /data/marg/abhishek/CoMeT/common/system/cache_efficiency_tracker.h \
+ /data/marg/abhishek/CoMeT/common/core/memory_subsystem/cache/cache_block_info.h \
+ /data/marg/abhishek/CoMeT/common/core/memory_subsystem/cache/cache_state.h \
+ /data/marg/abhishek/CoMeT/common/core/memory_subsystem/cache/cache_base.h \
+ /data/marg/abhishek/CoMeT/common/performance_model/hit_where.h \
+ /data/marg/abhishek/CoMeT/common/core/memory_subsystem/mem_component.h \
+ /data/marg/abhishek/CoMeT/common/core/core.h \
+ /data/marg/abhishek/CoMeT/common/misc/lock.h \
+ /data/marg/abhishek/CoMeT/common/network/packet_type.h \
+ /data/marg/abhishek/CoMeT/common/core/bbv_count.h \
+ /data/marg/abhishek/CoMeT/common/misc/cpuid.h \
+ /data/marg/abhishek/CoMeT/common/system/inst_mode.h \
+ /data/marg/abhishek/CoMeT/decoder_lib/decoder.h \
+ /data/marg/abhishek/CoMeT/common/core/thread.h \
+ /data/marg/abhishek/CoMeT/common/misc/cond.h \
+ /data/marg/abhishek/CoMeT/common/system/sync_client.h \
+ /data/marg/abhishek/CoMeT/common/user/sync_api.h \
+ /data/marg/abhishek/CoMeT/common/config/config_file.hpp \
+ /data/marg/abhishek/CoMeT/common/config/config.hpp \
+ /data/marg/abhishek/CoMeT/common/config/key.hpp \
+ /data/marg/abhishek/CoMeT/common/config/section.hpp \
+ /data/marg/abhishek/CoMeT/common/config/config_exceptions.hpp \
+ /data/marg/abhishek/CoMeT/common/config/config_file_grammar.hpp \
+ /data/marg/abhishek/CoMeT/common/config/config_file.hpp \
+ /data/marg/abhishek/CoMeT/common/system/thread_manager.h \
+ /data/marg/abhishek/CoMeT/common/misc/semaphore.h)

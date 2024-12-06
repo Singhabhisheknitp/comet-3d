@@ -110,6 +110,10 @@ else:
     c_init_file_external = hotspot_config_path + sim.config.get('hotspot/init_file_external_core')
 hotspot_config_file      =   hotspot_config_path + sim.config.get('hotspot/hotspot_config_file_mem')
 c_hotspot_config_file      =   hotspot_config_path + sim.config.get('hotspot/hotspot_config_file_core')
+# print("hotspot config file is being executed XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+# print(hotspot_config_path)  this is home directory of sniper/comet
+# print(sim.config.get('hotspot/hotspot_config_file_mem'))
+# print(hotspot_config_file)
 #hotspot_floorplan_file   =   sim.config.get('hotspot/floorplan_file')
 hotspot_floorplan_folder   = hotspot_config_path + sim.config.get('hotspot/floorplan_folder')
 hotspot_layer_file  =   hotspot_config_path + sim.config.get('hotspot/layer_file_mem')
@@ -127,6 +131,9 @@ hotspot_steady_temp_file = sim.config.get('hotspot/log_files_mem/steady_temp_fil
 hotspot_grid_steady_file = sim.config.get('hotspot/log_files_mem/grid_steady_file')
 hotspot_all_transient_file = sim.config.get('hotspot/log_files_mem/all_transient_file')
 power_trace_file = sim.config.get('hotspot/log_files_mem/power_trace_file')
+print("Power trace file path:")
+print("Relative path:", power_trace_file)
+print("Absolute path:", os.path.abspath(power_trace_file))
 power_trace_file_total = 'tmmpFile_power2'
 bank_mode_trace_file = sim.config.get('scheduler/open/dram/dtm/bank_mode_trace_file') # For low power mode.
 full_bank_mode_trace_file = sim.config.get('scheduler/open/dram/dtm/full_bank_mode_trace_file') # For low power mode.
@@ -176,7 +183,9 @@ if mem_dtm != "off":
 #if type_of_stack!="DDR":
 #hotspot_command = hotspot_command + ' -grid_layer_file ' + hotspot_layer_file \
 #                        +' -detailed_3D on'
-print hotspot_command                  
+
+# print("hotspot command is being executed XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+# print hotspot_command                  
 
 c_hotspot_config_path = hotspot_config_path
 #c_init_file_external = c_hotspot_config_path + sim.config.get('hotspot/init_file_external_core')
@@ -276,10 +285,11 @@ def gen_ptrace_header():
     f.close()
     return ptrace_header
     
-
+print("Loading memTherm_core.py") 
 #The main portion which invokes hotspot to generate temperature.trace
 class memTherm:
   def setup(self, args):
+    print("set up fucntion is being called ")
     args = dict(enumerate((args or '').split(':')))
     filename = args.get(1, None)
     interval_ns = sampling_interval
@@ -360,8 +370,11 @@ class memTherm:
     with open(full_bank_mode_trace_file, "w") as f:
         f.write("%s\n" %(mem_header))
     f.close()
+    print("memTherm setup done")
     #setup to invoke the hotspot tool every interval_ns time and invoke calc_temperature_trace function
     sim.util.Every(interval_ns * sim.util.Time.NS, self.calc_temperature_trace, statsdelta = self.sd, roi_only = True)
+    
+    sys.stdout.flush()
 
 
   def get_bank_modes(self, time, time_delta):

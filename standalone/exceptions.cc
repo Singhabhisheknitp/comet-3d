@@ -12,7 +12,9 @@ static void exceptionHandler(int sig, siginfo_t *scp, void *ctxt)
 {
    static bool in_handler = false;
 
-   fprintf(stderr, "\n[SNIPER] Internal exception: %s. Access Address = %p\n\n", strsignal(sig), scp->si_addr);
+
+   fprintf(stderr, "\n[SNIPER] Internal exception: %s. Access Address = %p and its value after dereferencing \n\n", strsignal(sig), scp->si_addr);
+   
 
    if (in_handler)
    {

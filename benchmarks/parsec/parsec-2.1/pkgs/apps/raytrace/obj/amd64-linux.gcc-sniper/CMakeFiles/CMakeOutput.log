@@ -1,0 +1,135 @@
+The system is: Linux - 5.15.0-117-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/gcc 
+Build flags: -O3;-funroll-loops;-fprefetch-loop-arrays;-static-libgcc;-Wl,--hash-style=both,--as-needed;-DPARSEC_VERSION=2.1;-DENABLE_PARSEC_HOOKS;-I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include;-I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks;-I/data/marg/abhishek/CoMeT/include;-DENABLE_PARMACS
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/g++ 
+Build flags: -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/include;-std=gnu++11;-O3;-funroll-loops;-fprefetch-loop-arrays;-fpermissive;-fno-exceptions;-static-libgcc;-Wl,--hash-style=both,--as-needed;-DPARSEC_VERSION=2.1;-DENABLE_PARSEC_HOOKS;-I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include;-I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks;-I/data/marg/abhishek/CoMeT/include;-std=gnu++98;-std=gnu++98;-fexceptions;-fno-strict-aliasing;-fno-align-labels;-DNDEBUG;-D_MM_NO_ALIGN_CHECK
+Id flags: 
+
+The output was:
+0
+CMakeCXXCompilerId.cpp:70:23: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+   70 | char* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CMakeCXXCompilerId.cpp:154:23: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+  154 | char* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS      -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS     -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS      -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/share/cmake-2.6/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS     -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o
+/usr/bin/g++    -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/include -std=gnu++11 -O3 -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -std=gnu++98 -std=gnu++98 -fexceptions -fno-strict-aliasing -fno-align-labels -DNDEBUG -D_MM_NO_ALIGN_CHECK      -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/g++    -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/include -std=gnu++11 -O3 -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -std=gnu++98 -std=gnu++98 -fexceptions -fno-strict-aliasing -fno-align-labels -DNDEBUG -D_MM_NO_ALIGN_CHECK     -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec -rdynamic 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/g++    -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/include -std=gnu++11 -O3 -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -std=gnu++98 -std=gnu++98 -fexceptions -fno-strict-aliasing -fno-align-labels -DNDEBUG -D_MM_NO_ALIGN_CHECK      -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/share/cmake-2.6/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/g++    -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/include -std=gnu++11 -O3 -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -std=gnu++98 -std=gnu++98 -fexceptions -fno-strict-aliasing -fno-align-labels -DNDEBUG -D_MM_NO_ALIGN_CHECK     -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec -rdynamic 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFiles.c.o
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS      -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFiles.c.o   -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS     -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec -rdynamic 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[2]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: Entering directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_progress_report /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o   -c /data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/share/cmake-2.6/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/tools/cmake/inst/amd64-linux.gcc-sniper/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc   -O3 -funroll-loops -fprefetch-loop-arrays -static-libgcc -Wl,--hash-style=both,--as-needed -DPARSEC_VERSION=2.1 -DENABLE_PARSEC_HOOKS -I/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/include -I/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -I/data/marg/abhishek/CoMeT/include -DENABLE_PARMACS   -DCHECK_FUNCTION_EXISTS=pthread_create  -fPIC -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/mesa/inst/amd64-linux.gcc-sniper/lib -L/usr/lib64 -L/usr/lib -L/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/libs/hooks/inst/amd64-linux.gcc-sniper/lib -uparmacs_roi_end -uparmacs_roi_start -L/data/marg/abhishek/CoMeT/benchmarks/tools/hooks -lhooks_base -lrt -pthread CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o  -o cmTryCompileExec -rdynamic -lpthread 
+make[3]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/data/marg/abhishek/CoMeT/benchmarks/parsec/parsec-2.1/pkgs/apps/raytrace/obj/amd64-linux.gcc-sniper/CMakeFiles/CMakeTmp'
+
+
