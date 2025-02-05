@@ -21,7 +21,7 @@
 #include "shmem_perf.h"
 
 using namespace std;
-#define MAX_NUM_OF_BANKS (128)
+#define MAX_NUM_OF_BANKS (256)
 
 struct read_trace_data
 {

@@ -20,9 +20,9 @@ using namespace std;
 
 #define LOW_POWER 0     // Memory power mode.
 #define NORMAL_POWER 1
-// #define HBM2E
+#define HBM2E
 #define BANK_COUNTERS
-#define HMC
+// #define HMC
 
 
 // Global variables are initialized to 0 by default
@@ -295,6 +295,7 @@ void dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UIn
             if (Sim()->m_bank_modes[read_bank_accessed] == NORMAL_POWER)
             {
                 ++read_access_count_per_bank[read_bank_accessed];
+               
             }
             else
             {
@@ -436,9 +437,11 @@ dram_write_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 
             write_last_printed_timestamp = write_interval_start_time;
         }
         else {
-            if (Sim()->m_bank_modes[read_bank_accessed] == NORMAL_POWER)
+            
+            if (Sim()->m_bank_modes[write_bank_accessed] == NORMAL_POWER)
             {
                 ++write_access_count_per_bank[write_bank_accessed];
+                
             }
             else
             {
