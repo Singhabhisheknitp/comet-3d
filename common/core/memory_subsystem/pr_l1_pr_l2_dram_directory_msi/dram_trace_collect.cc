@@ -144,7 +144,9 @@ UInt32 HBM_FLAG;
 //#define CALL_TRACE 0
     
 void read_memory_config(core_id_t requester)
-{
+{    TYPE_OF_STACK = Sim()->getCfg()->getStringArray("memory/type_of_stack", requester);
+     NUM_OF_BANKS = Sim()->getCfg()->getInt("memory/num_banks");
+
     #ifdef HMC
         NUM_OF_CHANNELS = Sim()->getCfg()->getInt("memory/num_channels");
         BANK_OFFSET_IN_PA = Sim()->getCfg()->getInt("memory/bank_offset_in_pa");
@@ -156,8 +158,8 @@ void read_memory_config(core_id_t requester)
 
         BANK_MASK = (((1<<(BANK_ADDRESS_BITS))-1) << BANK_OFFSET_IN_PA);
     #endif
-    TYPE_OF_STACK = Sim()->getCfg()->getStringArray("memory/type_of_stack", requester);
-    NUM_OF_BANKS = Sim()->getCfg()->getInt("memory/num_banks");
+   
+    
     BANKS_PER_CHANNEL = (NUM_OF_BANKS/NUM_OF_CHANNELS) - 1;
 }
 
