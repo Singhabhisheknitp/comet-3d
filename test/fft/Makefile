@@ -6,8 +6,8 @@ $(TARGET): $(TARGET).o
        
 run_$(TARGET):
 
-	strace -f -e trace=execve /../run-sniper -v -n 4 -c check  ./fft
-	# ../../run-sniper -v -n 4 -c gainestown_3Dmem ./fft 
+	# ../../run-sniper -v  -n 4 -c check  ./fft
+	../../run-sniper -v -c gainestown_DDR_1core  -- ./fft 
 	# ../../benchmarks/run-sniper -v -n 4 -c gainestown_3D --benchmarks=./fft, ./fft, ./fft, ./fft
 
 CLEAN_EXTRA=viz

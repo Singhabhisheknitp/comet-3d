@@ -64,7 +64,7 @@ DramCntlr::DramCntlr(MemoryManagerBase* memory_manager,
       }
       stats_initialized = 1;
    }
-}
+}   
 
 DramCntlr::~DramCntlr()
 {

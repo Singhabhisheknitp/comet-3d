@@ -7,7 +7,7 @@
 
 #include <decoder.h>
 
-#define MAX_NUM_OF_BANKS (1536)
+#define MAX_NUM_OF_BANKS (128)
 
 class _Thread;
 class SyscallServer;

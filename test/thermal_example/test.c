@@ -1,26 +1,18 @@
-#include<stdio.h>
-//#include "/home/shailja/workspace/research_2020/sniper/include/sim_api.h"
-#include "sim_api.h"
-#include<stdlib.h>
-#define LENGTH (262144/2)
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#define ARRAY_SIZE 16
 
-int main()
-{
-    int array[LENGTH], array1[LENGTH];
-    //SimRoiStart();
-    for(register int i = 0; i < LENGTH; i++){
-        array1[i] = rand() % 1024;
-    }
-    SimRoiStart();
-    for(register int i = 0; i < LENGTH; i++){
-        array[i] = rand() % 1024;
-    }
 
-    for(register int i = 0; i < LENGTH; i++){
-        array[i] = array[LENGTH-i]; //Re-use
+int main() {
+    // Allocate an array with some padding to ensure alignment
+    int *array = (int *)malloc(ARRAY_SIZE * sizeof(int));
+    
+    // Initialize array with some values
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        array[i] = i;
     }
-    SimRoiEnd();
-
+    
+    free(array);
     return 0;
 }
-

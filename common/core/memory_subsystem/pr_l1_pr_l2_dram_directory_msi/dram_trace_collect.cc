@@ -20,86 +20,148 @@ using namespace std;
 
 #define LOW_POWER 0     // Memory power mode.
 #define NORMAL_POWER 1
+// #define HBM2E
+#define BANK_COUNTERS
+#define HMC
+
 
 // Global variables are initialized to 0 by default
 
-UInt64 NUM_OF_BANKS;
-UInt64 BANK_ADDRESS_BITS;
-UInt64 BANK_OFFSET_IN_PA;
-UInt64 BANKS_PER_LAYER;
-UInt64 BANKS_PER_CHANNEL;
-UInt64 BANK_MASK;
-UInt64 NUM_OF_CHANNELS;
-String TYPE_OF_STACK;
+#ifdef BANK_COUNTERS
+    #define ACCUMULATION_TIME     (1000)    // Till 200 us bank counts will be accumalated
 
-unsigned long num_of_dram_reads;
-unsigned long num_of_dram_writes;
+    #ifndef HBM2E
+        UInt64 BANK_ADDRESS_BITS;
+        UInt64 BANK_OFFSET_IN_PA;
+        UInt64 NUM_OF_CHANNELS;
+        UInt64 BANK_MASK;
+    #endif
 
-UInt64 read_access_count_per_bank[MAX_NUM_OF_BANKS];
-UInt64 read_access_count_export[MAX_NUM_OF_BANKS];
+    UInt64 NUM_OF_BANKS;
 
-UInt64 read_access_count_per_bank_lowpower[MAX_NUM_OF_BANKS];
-UInt64 read_access_count_export_lowpower[MAX_NUM_OF_BANKS];
-UInt64 bank_mode_export[MAX_NUM_OF_BANKS]; // For tracking memory bank power modes.
+    UInt64 BANKS_PER_LAYER;
+    UInt64 BANKS_PER_CHANNEL;
+  
+    String TYPE_OF_STACK;
 
-UInt32 read_access_count;
-UInt64 read_interval_start_time;
-UInt32 read_bank_accessed;
-UInt32 read_last_printed_timestamp;
+    unsigned long num_of_dram_reads;
+    unsigned long num_of_dram_writes;
 
-UInt64 write_access_count_per_bank[MAX_NUM_OF_BANKS];
-UInt64 write_access_count_export[MAX_NUM_OF_BANKS];
+    UInt64 read_access_count_per_bank[MAX_NUM_OF_BANKS];
+    UInt64 read_access_count_export[MAX_NUM_OF_BANKS];
 
-UInt64 write_access_count_per_bank_lowpower[MAX_NUM_OF_BANKS];
-UInt64 write_access_count_export_lowpower[MAX_NUM_OF_BANKS];
+    UInt64 read_access_count_per_bank_lowpower[MAX_NUM_OF_BANKS];
+    UInt64 read_access_count_export_lowpower[MAX_NUM_OF_BANKS];
+    UInt64 bank_mode_export[MAX_NUM_OF_BANKS]; // For tracking memory bank power modes.
 
-UInt32 write_access_count;
-UInt64 write_interval_start_time;
-UInt32 write_bank_accessed;
-UInt32 write_last_printed_timestamp;
+    UInt32 read_access_count;
+    UInt64 read_interval_start_time;
+    UInt32 read_bank_accessed;
+    UInt32 read_last_printed_timestamp;
 
-UInt32 total_access_count;
-uintptr_t address_ptr;
-    
-int on_entry_to_roi_read;
-int on_entry_to_roi_write;
-UInt64 roi_start_time_read;
-UInt64 roi_start_time_write;
+    UInt64 write_access_count_per_bank[MAX_NUM_OF_BANKS];
+    UInt64 write_access_count_export[MAX_NUM_OF_BANKS];
 
-    
-vector<read_trace_data> rdt;
-vector<write_trace_data> wrt;
-UInt64 read_adv_count;
-UInt64 write_adv_count;
+    UInt64 write_access_count_per_bank_lowpower[MAX_NUM_OF_BANKS];
+    UInt64 write_access_count_export_lowpower[MAX_NUM_OF_BANKS];
+
+    UInt32 write_access_count;
+    UInt64 write_interval_start_time;
+    UInt32 write_bank_accessed;
+    UInt32 write_last_printed_timestamp;
+
+    UInt32 total_access_count;
+    uintptr_t address_ptr;
+        
+    int on_entry_to_roi_read;
+    int on_entry_to_roi_write;
+    UInt64 roi_start_time_read;
+    UInt64 roi_start_time_write;
+
+        
+    vector<read_trace_data> rdt;
+    vector<write_trace_data> wrt;
+    UInt64 read_adv_count;
+    UInt64 write_adv_count;
+    UInt32 row_accessed;
+
+#endif
 
 #define ENABLE_CHANNEL_PARTITIONING 0
-#define ACCUMULATION_TIME     (1000)    // Till 200 us bank counts will be accumalated
+
 
 UInt32 MCP_FLAG;
+UInt32 HBM_FLAG;
 
+
+
+// #ifdef HBM3E
+//     #define NUM_OF_CHANNELS         (16)
+//     #define NUM_OF_PSEUDO_CHANNELS  (96)
+//     #define BANK_GROUPS_PER_PSEUDO_CHANNEL (2)
+//     #define BANKS_PER_BG            (8)
+//     #define NUM_OF_CHANNEL_ADD_BITS (4)       // log(NUM_OF_CHANNELS) with base 2.
+//     //#define NUM_OF_CH_AND_BANK_BITS (7)     // log(NUM_OF_CHANNELS) + log(BANKS_PER_BG)
+    
+//     #define BANK_ADDRESS_BITS       (11)
+//     #define BANK_OFFSET_IN_PA       (6)
+//     #define HBM_CHANNEL_MASK        (15)
+//     #define HBM_PSEUDO_CHANNEL_MASK (7)
+//     #define HBM_BANK_MASK           (7) 
+//     #define HBM_BANK_GROUP_MASK     (1)
+//     #define ROW_ADDRESS_BITS        (14)
+//     #define ROW_OFFSET_IN_PA        (18)
+//     #define NUM_OF_CH_AND_BANK_BITS (7) 
+//     #define BANK_GROUPS_PER_CHANNEL (2)
+// #endif
+
+#ifdef HBM2E
+    #define BANK_OFFSET_IN_PA       (6)
+    #define ROW_OFFSET_IN_PA        (18)
+
+    #define BANK_ADDRESS_BITS       (8)
+    #define ROW_ADDRESS_BITS        (14)
+
+    #define BANK_MASK             ( ( ( 1<<(BANK_ADDRESS_BITS) ) - 1) << BANK_OFFSET_IN_PA) // Bank Address starts bank_offset bits from LSB
+    #define ROW_MASK             ( ( ( 1<<(ROW_ADDRESS_BITS) ) - 1) << ROW_OFFSET_IN_PA) 
+    
+    
+    #define HBM_CHANNEL_MASK        (15)
+    #define HBM_BANK_MASK           (3) 
+    #define HBM_BANK_GROUP_MASK     (1)
+
+    #define NUM_OF_CHANNEL_ADD_BITS (4)       //log(NUM_OF_CHANNELS) with base 2.
+    #define NUM_OF_CH_AND_BANK_BITS (6)      // log(NUM_OF_CHANNELS) + log(BANKS_PER_BG)
+   
+    
+    #define NUM_OF_CHANNELS         (16)
+    #define BANK_GROUPS_PER_CHANNEL (2)
+    #define BANKS_PER_BG            (4)  
+
+        
+#endif
 
 //#define CALL_TRACE 0
-
+    
 void read_memory_config(core_id_t requester)
 {
-    TYPE_OF_STACK = Sim()->getCfg()->getStringArray("memory/type_of_stack", requester);
-    NUM_OF_CHANNELS = Sim()->getCfg()->getInt("memory/num_channels");
-    NUM_OF_BANKS = Sim()->getCfg()->getInt("memory/num_banks");
-    //BANK_ADDRESS_BITS = Sim()->getCfg()->getInt("memory/num_bank_address_bits");
-    BANK_ADDRESS_BITS = log2(NUM_OF_BANKS);
-    BANK_OFFSET_IN_PA = Sim()->getCfg()->getInt("memory/bank_offset_in_pa");
-    //BANKS_PER_LAYER = Sim()->getCfg()->getInt("memory/banks_per_layer");
-    if (TYPE_OF_STACK == "DDR")
-        BANKS_PER_LAYER = NUM_OF_BANKS;
-    else
-        BANKS_PER_LAYER = NUM_OF_CHANNELS;
+    #ifdef HMC
+        NUM_OF_CHANNELS = Sim()->getCfg()->getInt("memory/num_channels");
+        BANK_OFFSET_IN_PA = Sim()->getCfg()->getInt("memory/bank_offset_in_pa");
+        BANK_ADDRESS_BITS = log2(NUM_OF_BANKS);
+        if (TYPE_OF_STACK == "DDR")
+            BANKS_PER_LAYER = NUM_OF_BANKS;
+        else
+            BANKS_PER_LAYER = NUM_OF_CHANNELS;
 
-    //BANKS_PER_CHANNEL = Sim()->getCfg()->getInt("memory/banks_per_channel");
+        BANK_MASK = (((1<<(BANK_ADDRESS_BITS))-1) << BANK_OFFSET_IN_PA);
+    #endif
+    TYPE_OF_STACK = Sim()->getCfg()->getStringArray("memory/type_of_stack", requester);
+    NUM_OF_BANKS = Sim()->getCfg()->getInt("memory/num_banks");
     BANKS_PER_CHANNEL = (NUM_OF_BANKS/NUM_OF_CHANNELS) - 1;
-    BANK_MASK = (((1<<(BANK_ADDRESS_BITS))-1) << BANK_OFFSET_IN_PA);
 }
-void 
-dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 m_reads)
+
+void dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 m_reads)  
 {
 
     address_ptr = address;
@@ -131,40 +193,66 @@ dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 m
         
         //read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
         
-        if(TYPE_OF_STACK ==  "3Dmem" || TYPE_OF_STACK == "2.5D") {
-            if(ENABLE_CHANNEL_PARTITIONING)
-                read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
-            else {
-                read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % NUM_OF_CHANNELS;
-                MCP_FLAG++;
-                if(MCP_FLAG == NUM_OF_CHANNELS)
-                    MCP_FLAG = 0;
+        #ifdef HBM2E
+            UInt32 temp = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+            row_accessed = ((address & ROW_MASK) >> ROW_OFFSET_IN_PA);
+            UInt32 HBM_Channel = temp & HBM_CHANNEL_MASK;
+            UInt32 HBM_Bank    = ((temp & (HBM_BANK_MASK << NUM_OF_CHANNEL_ADD_BITS)) >> NUM_OF_CHANNEL_ADD_BITS);
+            UInt32 HBM_BankGroup = ((temp & (HBM_BANK_GROUP_MASK << NUM_OF_CH_AND_BANK_BITS)) >> NUM_OF_CH_AND_BANK_BITS);
+            //printf("temp=%d, HBM_Channel=%d, HB_Bank=%d, HBM_BankGroup=%d\n", temp, HBM_Channel, HBM_Bank, HBM_BankGroup);
+            if(ENABLE_CHANNEL_PARTITIONING){
+                read_bank_accessed = ((requester/memory_controllers_interleaving + HBM_FLAG*NUM_OF_CHANNELS) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
             }
-        }
-        else {
-            if(TYPE_OF_STACK == "3D") {
+            else{
+                read_bank_accessed = ((HBM_Channel + HBM_FLAG*8) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
+            }
+        #endif
+
+
+
+        #ifdef HMC
+
+            if(TYPE_OF_STACK ==  "3Dmem" || TYPE_OF_STACK == "2.5D") {
                 if(ENABLE_CHANNEL_PARTITIONING)
                     read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
                 else {
-                    read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % (NUM_OF_CHANNELS*1);
+                    read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % NUM_OF_CHANNELS;
                     MCP_FLAG++;
-                    if(MCP_FLAG == (NUM_OF_CHANNELS*1))
+                    if(MCP_FLAG == NUM_OF_CHANNELS)
                         MCP_FLAG = 0;
-                }  
+                }
             }
             else {
-                if(TYPE_OF_STACK ==  "DDR") {
-                    read_bank_accessed = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+                if(TYPE_OF_STACK == "3D") {
+                    if(ENABLE_CHANNEL_PARTITIONING)
+                        read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
+                    else {
+                        read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % (NUM_OF_CHANNELS*1);
+                        MCP_FLAG++;
+                        if(MCP_FLAG == (NUM_OF_CHANNELS*1))
+                            MCP_FLAG = 0;
+                    }  
                 }
                 else {
-                    printf("Invalid type of stack\n");
-                    exit(0);
+                    if(TYPE_OF_STACK ==  "DDR") {
+                        read_bank_accessed = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+                        // printf("read_bank_accessed is %lu\n", read_bank_accessed);
+                    }
+                    else {
+                        printf("Invalid type of stack\n");
+                        exit(0);
+                    }
                 }
+                
             }
-            
-        }
         
-
+        #endif
         //printf("\nRead banked accessed %d\n", read_bank_accessed) ;
 
         UInt64 current_time = now.getUS();
@@ -188,9 +276,8 @@ dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 m
 
             rdt[read_adv_count].rd_interval_start_time = read_interval_start_time;
             rdt[read_adv_count].read_access_count_per_epoch = read_access_count;
-            //printf("\nRead:");
+           
             for(UInt32 i = 0; i < NUM_OF_BANKS; i = i + 1 ){
-                //printf("%d,", read_access_count_per_bank[i]);
                 rdt[read_adv_count].bank_read_access_count[i] = read_access_count_per_bank[i];
                 rdt[read_adv_count].bank_read_access_count_lowpower[i] = read_access_count_per_bank_lowpower[i];
                 read_access_count_export[i] = read_access_count_per_bank[i];
@@ -214,6 +301,7 @@ dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 m
             ++read_access_count;
         }
     }
+    // printf("address is  : %lu and read_bank_accessed is : %lu",address,read_bank_accessed);
 }
 
 void
@@ -253,42 +341,64 @@ dram_write_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 
         
         //write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
 
-        if(TYPE_OF_STACK ==  "3Dmem" || TYPE_OF_STACK == "2.5D") {
-            if(ENABLE_CHANNEL_PARTITIONING)
-                write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
-            else {
-                write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % NUM_OF_CHANNELS;
-                MCP_FLAG++;
-                if(MCP_FLAG == NUM_OF_CHANNELS)
-                    MCP_FLAG = 0;
+
+        #ifdef HBM2E
+            UInt32 temp= ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+            UInt32 HBM_Channel = temp & HBM_CHANNEL_MASK;
+            UInt32 HBM_Bank    = ((temp & (HBM_BANK_MASK << NUM_OF_CHANNEL_ADD_BITS)) >> NUM_OF_CHANNEL_ADD_BITS);
+            UInt32 HBM_BankGroup = ((temp & (HBM_BANK_GROUP_MASK << NUM_OF_CH_AND_BANK_BITS)) >> NUM_OF_CH_AND_BANK_BITS);
+            if(ENABLE_CHANNEL_PARTITIONING){
+                write_bank_accessed = ((requester/memory_controllers_interleaving + HBM_FLAG*NUM_OF_CHANNELS) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
             }
-        }
-        else {
-            if(TYPE_OF_STACK == "3D") {
+            else{
+                write_bank_accessed = ((HBM_Channel + HBM_FLAG*8) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
+            }
+        #endif
+
+
+        #ifdef HMC
+            if(TYPE_OF_STACK ==  "3Dmem" || TYPE_OF_STACK == "2.5D") {
                 if(ENABLE_CHANNEL_PARTITIONING)
                     write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
                 else {
-                    write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % (NUM_OF_CHANNELS*1);
+                    write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % NUM_OF_CHANNELS;
                     MCP_FLAG++;
-                    if(MCP_FLAG == (NUM_OF_CHANNELS*1))
+                    if(MCP_FLAG == NUM_OF_CHANNELS)
                         MCP_FLAG = 0;
                 }
             }
             else {
-                if(TYPE_OF_STACK ==  "DDR") {
-                    write_bank_accessed = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+                if(TYPE_OF_STACK == "3D") {
+                    if(ENABLE_CHANNEL_PARTITIONING)
+                        write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
+                    else {
+                        write_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + MCP_FLAG % (NUM_OF_CHANNELS*1);
+                        MCP_FLAG++;
+                        if(MCP_FLAG == (NUM_OF_CHANNELS*1))
+                            MCP_FLAG = 0;
+                    }
                 }
                 else {
-                    printf("Invalid type of stack\n");
-                    exit(0);
+                    if(TYPE_OF_STACK ==  "DDR") {
+                        write_bank_accessed = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+                    }
+                    else {
+                        printf("Invalid type of stack\n");
+                        exit(0);
+                    }
                 }
+                
             }
-            
-        }
-        
-        //printf("\nWrite banked accessed %d\n", write_bank_accessed) ;
+        #endif  
+       
         UInt64 current_time = now.getUS();
-        //printf("Current time is put()%u\n", current_time);
+       
         
         
         if (current_time > ACCUMULATION_TIME + write_interval_start_time){
@@ -335,6 +445,7 @@ dram_write_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 
             ++write_access_count;
         }
     }
+    // printf("address is  : %lu and read_bank_accessed is : %lu",address,read_bank_accessed);
 }
 
 //  Moved this to a separate function to be used by other files.

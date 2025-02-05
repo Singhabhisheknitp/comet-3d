@@ -936,7 +936,7 @@ elif os.path.exists(os.path.join(outputdir, 'sim.cfg')):
 
   gen_simout.generate_simout(resultsdir = outputdir, output = open(os.path.join(outputdir, 'sim.out'), 'w'), silent = True)
 
-print("line 929")
+print("line 939")
 stats = dict(
   host = platform.node(),
   user = os.getenv('USER') or os.getenv('USERNAME'),

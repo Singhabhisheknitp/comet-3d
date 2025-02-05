@@ -559,9 +559,9 @@ class memTherm:
   def execute_core_hotspot(self, vdd_str):
      #the function to execute core hotspot separately. It is called only for 3Dmem and 2D arch.
     c_executable = hotspot_path + 'hotspot'
- #  hotspot_steady_temp_file = config.get('hotspot_c/hotspot_steady_temp_file')
- #  hotspot_grid_steady_file = config.get('hotspot_c/hotspot_grid_steady_file')
- #  hotspot_all_transient_file = config.get('hotspot_c/all_transient_file')
+    # hotspot_steady_temp_file = config.get('hotspot_c/hotspot_steady_temp_file')
+    # hotspot_grid_steady_file = config.get('hotspot_c/hotspot_grid_steady_file')
+    # hotspot_all_transient_file = config.get('hotspot_c/all_transient_file')
 
     c_powerLogFileName = file(c_full_power_trace_file, 'a');
     #c_powerInstantaneousFileName = file(c_power_trace_file, 'r');
@@ -594,6 +594,7 @@ class memTherm:
      #print hotspot_binary, hotspot_args
 #     c_temperatures = subprocess.check_output([hotspot_binary] + hotspot_args)
      #print c_hotspot_args
+ 
      os.system(c_hotspot_args)
      os.system("cp -f " + c_hotspot_all_transient_file + " " + c_init_file)
 

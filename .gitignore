@@ -1,0 +1,21 @@
+   # Ignore object files
+   *.o
+   *.d
+
+   # Ignore static and dynamic libraries
+   *.a
+   *.so
+   *.dll
+
+   # Ignore compiled binary files
+   *.exe
+   *.out
+
+   # Ignore build directories
+   /build/
+   /bin/
+   /lib/
+
+   # Ignore other temporary files
+   *~
+   *.swp
