@@ -3,7 +3,7 @@
 #include "../../../include/sim_api.h"
 // #include <omp.h>
 
-#define SIZE 4
+#define SIZE 8192*16
 #define CACHE_LINE 64  // typical cache line size in bytes
 
 int main() {

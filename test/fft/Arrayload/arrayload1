@@ -1,0 +1,94 @@
+line 10
+line 117
+line 370
+line 464
+line 606
+line 754
+line 850
+[SNIPER] Start
+line 875
+Executing Python script /data/marg/abhishek/CoMeT/test/fft/Arrayload/sim.scripts.py
+Power trace file path:
+('Relative path:', 'power_mem.trace')
+('Absolute path:', '/data/marg/abhishek/CoMeT/test/fft/Arrayload/power_mem.trace')
+copying files for first run
+Loading memTherm_core.py
+set up fucntion is being called 
+memTherm setup done
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running pre-ROI region in  CACHE_ONLY mode
+[SNIPER] Running application ROI in DETAILED mode
+[SNIPER] Running post-ROI region in FAST_FORWARD mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[STAT:dram.bank_mode]  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+idx = 10
+table[idx].value = 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+idx = 14
+table[idx].value = 1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1
+Warning: transient leakage iteration is not supported in this release...
+ ...all transient results are without thermal-leakage loop.
+flp_file= 
+do_detailed_3D= 1
+Arch type: Core
+Arch type : Core
+Arch type: Core
+Arch type: Core
+Arch type: Core
+leak_convg_true
+Dumping transient temperatures for init in file all_transient_core.init
+Unit	Steady(Kelvin)
+[STAT:dram.bank_read_access_counter]  80 79 83 83 83 83 80 80 80 85 83 83 84 88 80 80 80 83 83 83 84 80 80 80 80 83 83 83 84 80 80 80 80 83 83 83 84 80 80 80 80 83 83 83 84 80 80 80 80 83 83 83 84 80 80 80 80 83 83 83 84 80 80 80 176 175 170 170 177 168 169 169 166 168 170 170 183 182 169 169 170 170 170 170 170 169 169 169 170 170 170 170 170 169 169 169 170 170 170 170 170 169 169 169 170 170 170 170 170 169 169 169 170 170 170 170 170 169 169 169 170 170 170 170 170 169 169 169 84 87 87 87 101 89 89 89 96 87 87 87 96 89 89 89 92 87 87 87 88 89 89 89 92 87 87 87 88 89 89 89 92 87 87 87 88 89 89 89 92 87 87 87 88 89 89 89 92 87 87 87 88 89 89 89 92 87 87 87 88 89 89 89 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[STAT:dram.bank_write_access_counter]  32 34 36 36 36 37 32 32 33 34 36 36 36 44 32 32 33 36 36 36 36 32 32 32 33 36 36 36 36 32 32 32 33 36 36 36 36 32 32 32 33 36 36 36 36 32 32 32 33 36 36 36 36 32 32 32 33 36 36 36 36 32 32 32 62 64 62 62 59 57 61 61 66 64 62 62 63 70 61 61 63 62 62 62 63 61 61 61 63 62 62 62 63 61 61 61 63 62 62 62 63 61 61 61 63 62 62 62 63 61 61 61 63 62 62 62 63 61 61 61 63 62 62 62 63 61 61 61 29 26 26 26 29 29 29 29 25 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 28 26 26 26 25 29 29 29 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+idx = 10
+table[idx].value = 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+idx = 15
+table[idx].value = 1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1
+Warning: transient leakage iteration is not supported in this release...
+ ...all transient results are without thermal-leakage loop.
+flp_file= 
+do_detailed_3D= 1
+Memory type 3Dmem/DDR: 3Dmem 
+Arch type : 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+Memory type 3Dmem/DDR: 3Dmem
+leak_convg_true
+Dumping transient temperatures for init in file all_transient_mem.init
+Unit	Steady(Kelvin)
+
+   	Time	#READs	#WRITEs	#Access		Bank Counters
+
+
+@& 	3000	0	0	0		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+
+@& 	4000	21806	7909	29715		112, 113, 119, 119, 119, 120, 112, 112, 113, 119, 119, 119, 120, 132, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 113, 119, 119, 119, 120, 112, 112, 112, 238, 239, 232, 232, 236, 225, 230, 230, 232, 232, 232, 232, 246, 252, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 233, 232, 232, 232, 233, 230, 230, 230, 113, 113, 113, 113, 130, 118, 118, 118, 121, 113, 113, 113, 121, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 120, 113, 113, 113, 113, 118, 118, 118, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 11.65 seconds
+[SNIPER] Simulated 2.9M instructions, 16.6M cycles, 0.18 IPC
+[SNIPER] Simulation speed 252.6 KIPS (3.9 KIPS / target core - 253322.6ns/instr)
+[SNIPER] Sampling: executed 23.66% of simulated time in detailed mode
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[TRACE:0] -- DONE --
+[RECORD-TRACE] Using the Pin frontend (sift/recorder)
+
+Total number of DRAM read requests = 49293 
+
+Total number of DRAM write requests = 17072 
+
+line 796
+line 799
+line 803
+line 806
+line 879
+line 884
+[SNIPER] End
+[SNIPER] Elapsed time: 17.11 seconds
+line 939

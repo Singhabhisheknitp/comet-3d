@@ -95,27 +95,34 @@ UInt32 HBM_FLAG;
 
 
 
-// #ifdef HBM3E
-//     #define NUM_OF_CHANNELS         (16)
-//     #define NUM_OF_PSEUDO_CHANNELS  (96)
-//     #define BANK_GROUPS_PER_PSEUDO_CHANNEL (2)
-//     #define BANKS_PER_BG            (8)
-//     #define NUM_OF_CHANNEL_ADD_BITS (4)       // log(NUM_OF_CHANNELS) with base 2.
-//     //#define NUM_OF_CH_AND_BANK_BITS (7)     // log(NUM_OF_CHANNELS) + log(BANKS_PER_BG)
-    
-//     #define BANK_ADDRESS_BITS       (11)
-//     #define BANK_OFFSET_IN_PA       (6)
-//     #define HBM_CHANNEL_MASK        (15)
-//     #define HBM_PSEUDO_CHANNEL_MASK (7)
-//     #define HBM_BANK_MASK           (7) 
-//     #define HBM_BANK_GROUP_MASK     (1)
-//     #define ROW_ADDRESS_BITS        (14)
-//     #define ROW_OFFSET_IN_PA        (18)
-//     #define NUM_OF_CH_AND_BANK_BITS (7) 
-//     #define BANK_GROUPS_PER_CHANNEL (2)
-// #endif
 
 #ifdef HBM2E
+    #define BANK_OFFSET_IN_PA       (6)
+    #define ROW_OFFSET_IN_PA        (18)
+
+    #define BANK_ADDRESS_BITS       (8)
+    #define ROW_ADDRESS_BITS        (14)
+
+    #define BANK_MASK             ( ( ( 1<<(BANK_ADDRESS_BITS) ) - 1) << BANK_OFFSET_IN_PA) // Bank Address starts bank_offset bits from LSB
+    #define ROW_MASK             ( ( ( 1<<(ROW_ADDRESS_BITS) ) - 1) << ROW_OFFSET_IN_PA) 
+    
+    
+    #define HBM_CHANNEL_MASK        (15)
+    #define HBM_BANK_MASK           (3) 
+    #define HBM_BANK_GROUP_MASK     (1)
+
+    #define NUM_OF_CHANNEL_ADD_BITS (4)       //log(NUM_OF_CHANNELS) with base 2.
+    #define NUM_OF_CH_AND_BANK_BITS (6)      // log(NUM_OF_CHANNELS) + log(BANKS_PER_BG)
+   
+    
+    #define NUM_OF_CHANNELS         (16)
+    #define BANK_GROUPS_PER_CHANNEL (2)
+    #define BANKS_PER_BG            (4)  
+
+        
+#endif
+
+#ifdef HBM2e
     #define BANK_OFFSET_IN_PA       (6)
     #define ROW_OFFSET_IN_PA        (18)
 
