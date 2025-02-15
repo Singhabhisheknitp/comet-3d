@@ -18,4 +18,4 @@
 
    # Ignore other temporary files
    *~
-   *.swp
+   *.swpbenchmarks/parsec/parsec-2.1/pkgs/kernels/dedup/inputs/input_simlarge.tar
