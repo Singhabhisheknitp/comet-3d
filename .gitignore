@@ -19,3 +19,4 @@
    # Ignore other temporary files
    *~
    *.swpbenchmarks/parsec/parsec-2.1/pkgs/kernels/dedup/inputs/input_simlarge.tar
+lib/libcarbon_sim.a
