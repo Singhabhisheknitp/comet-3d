@@ -185,7 +185,8 @@ bool Sift::Reader::initResponse()
 }
 
 bool Sift::Reader::Read(Instruction &inst)
-{
+
+{ 
    if (input == NULL)
    {
       if (!initStream())

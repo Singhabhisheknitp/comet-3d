@@ -7,8 +7,6 @@ import sniper_lib, sniper_config, gen_simout, debugpin, env_setup, run_sniper
 
 HOME = env_setup.sim_root()
 
-print("line 10")
-
 def usage():
   print 'Run program under the Sniper simulator'
   print 'Usage:'
@@ -114,7 +112,7 @@ use_pa = True
 if not sys.argv[1:]:
   usage()
 
-print("line 117")
+
 def findfile(filename, extension, paths, subpaths = ('.')):
   for dirname in paths:
     for subpath in subpaths:
@@ -367,7 +365,7 @@ for o, a in opts:
   if o.startswith('--') and o[2:]+'=' in record_trace_passthrough:
     trace_extra_args += [o, a]
 
-print("line 370")
+
 if cmdline:
   if use_mpi or use_sift:
     standalone = True
@@ -461,7 +459,7 @@ if save_output:
   prefix_fd = run_sniper.Tee(os.path.join(outputdir, 'sim.stdout'))
   os.dup2(prefix_fd, sys.stdout.fileno())
   os.dup2(prefix_fd, sys.stderr.fileno())
-print("line 464")
+
 if heteroconfig:
   hcfgfile = os.path.join(outputdir,'sim.hetero.cfg')
   fp = open(hcfgfile, 'w')
@@ -603,7 +601,7 @@ elif use_sift:
   applications = [
     ([], other_options + ['-e', '1', '-s', '0', '-r', '1', '--follow', '--routine-tracing', '--' ] + cmdline)
   ]
-print("line 606")
+
 # Setup common generated trace files
 tracecmds = []
 if tracegen:
@@ -751,7 +749,7 @@ else:
 
 queue = Queue.Queue()
 
-print("line 754")
+
 memusage = 0; stopping = False
 usage = None
 
@@ -793,22 +791,22 @@ def execute():
   # print("cmd is being executed")
   # print(cmd)
   subproc = subprocess.Popen(cmd, env = env)
-  print("line 796")
+
 
   log_memory(subproc.pid)
-  print("line 799")
+
 
   try:
     try:
-      print("line 803")
+  
       pid, rc, usage = os.wait4(subproc.pid, 0)
-      print("line 806")
+  
     except AttributeError:
-      print("line 807")
+
       pid, rc = os.waitpid(subproc.pid, 0)
   except KeyboardInterrupt:
     try:
-      print("line 811")
+
       os.kill(subproc.pid, 9)
     except OSError:
       # Already dead, never mind
@@ -853,7 +851,7 @@ def execute_appdebug():
 
   return rc
 
-print("line 850")
+
 if save_patch:
   sniperrootdir = HOME
   gitdir = os.path.join(sniperrootdir, '.git')
@@ -874,15 +872,15 @@ print '[SNIPER] Start'
 
 try:
   if use_gdb and not standalone:
-    print("line 871")
+
     rc = debugpin.execute_gdb(cmd = cmd, env = env, pin_home = pin_home, arch = arch, wait = gdb_wait, quit = gdb_quit)
   elif use_appdebug and not (appdebug_manual or appdebug_nowait):
-    print("line 873")
+
     rc = execute_appdebug()
   else:
-    print("line 875")
+
     rc = execute()
-    print("line 879")
+
 
 except KeyboardInterrupt:
   # Make sure Sniper itself is stopped, even if it didn't respond to the SIGINT
@@ -891,7 +889,7 @@ except KeyboardInterrupt:
   sniper_lib.kill_children()
   sys.exit(-1)
 
-print("line 884")
+
 stopping = True
 t_end = time.time()
 t_elapsed = t_end - t_start
@@ -936,7 +934,7 @@ elif os.path.exists(os.path.join(outputdir, 'sim.cfg')):
 
   gen_simout.generate_simout(resultsdir = outputdir, output = open(os.path.join(outputdir, 'sim.out'), 'w'), silent = True)
 
-print("line 939")
+
 stats = dict(
   host = platform.node(),
   user = os.getenv('USER') or os.getenv('USERNAME'),

@@ -20,7 +20,7 @@ using namespace std;
 
 #define LOW_POWER 0     // Memory power mode.
 #define NORMAL_POWER 1
-#define HBM2E
+#define HBM2e
 #define BANK_COUNTERS
 // #define HMC
 
@@ -135,14 +135,14 @@ UInt32 HBM_FLAG;
     
     #define HBM_CHANNEL_MASK        (15)
     #define HBM_BANK_MASK           (3) 
-    #define HBM_BANK_GROUP_MASK     (1)
+    #define HBM_BANK_GROUP_MASK     (3)
 
     #define NUM_OF_CHANNEL_ADD_BITS (4)       //log(NUM_OF_CHANNELS) with base 2.
-    #define NUM_OF_CH_AND_BANK_BITS (6)      // log(NUM_OF_CHANNELS) + log(BANKS_PER_BG)
+    #define NUM_OF_CH_AND_BG_BITS (6)      // log(NUM_OF_CHANNELS) + log(HBM_BANK_GROUP_PER_CHANNEL)
    
     
     #define NUM_OF_CHANNELS         (16)
-    #define BANK_GROUPS_PER_CHANNEL (2)
+    #define BANK_GROUPS_PER_CHANNEL (4)
     #define BANKS_PER_BG            (4)  
 
         
@@ -201,10 +201,9 @@ void dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UIn
         ++total_access_count;
         
         //read_bank_accessed = (((address & BANK_MASK) >> BANK_OFFSET_IN_PA) & BANKS_PER_CHANNEL) * BANKS_PER_LAYER + (requester/memory_controllers_interleaving);
-        
+            
         #ifdef HBM2E
             UInt32 temp = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
-            row_accessed = ((address & ROW_MASK) >> ROW_OFFSET_IN_PA);
             UInt32 HBM_Channel = temp & HBM_CHANNEL_MASK;
             UInt32 HBM_Bank    = ((temp & (HBM_BANK_MASK << NUM_OF_CHANNEL_ADD_BITS)) >> NUM_OF_CHANNEL_ADD_BITS);
             UInt32 HBM_BankGroup = ((temp & (HBM_BANK_GROUP_MASK << NUM_OF_CH_AND_BANK_BITS)) >> NUM_OF_CH_AND_BANK_BITS);
@@ -220,6 +219,26 @@ void dram_read_trace(IntPtr address, core_id_t requester, SubsecondTime now, UIn
                 HBM_FLAG++;
                 if(HBM_FLAG == 2)
                     HBM_FLAG = 0;
+            }
+        #endif
+
+
+
+        #ifdef HBM2e
+            UInt32 temp = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+            UInt32 HBM_Channel = temp & HBM_CHANNEL_MASK;
+            UInt32 HBM_BankGroup = (temp >> NUM_OF_CHANNEL_ADD_BITS) & HBM_BANK_GROUP_MASK;
+            UInt32 HBM_Bank    = ((temp >>  NUM_OF_CH_AND_BG_BITS ) & HBM_BANK_MASK);
+
+            //printf("temp=%d, HBM_Channel=%d, HB_Bank=%d, HBM_BankGroup=%d\n", temp, HBM_Channel, HBM_Bank, HBM_BankGroup);
+            if(ENABLE_CHANNEL_PARTITIONING){
+                read_bank_accessed = ((requester/memory_controllers_interleaving + HBM_FLAG*NUM_OF_CHANNELS) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
+            }
+            else{
+                read_bank_accessed = ((HBM_Channel) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
             }
         #endif
 
@@ -368,6 +387,24 @@ dram_write_trace(IntPtr address, core_id_t requester, SubsecondTime now, UInt64 
                 HBM_FLAG++;
                 if(HBM_FLAG == 2)
                     HBM_FLAG = 0;
+            }
+        #endif
+
+       #ifdef HBM2e
+            UInt32 temp = ((address & BANK_MASK) >> BANK_OFFSET_IN_PA);
+            UInt32 HBM_Channel = temp & HBM_CHANNEL_MASK;
+            UInt32 HBM_BankGroup = (temp >> NUM_OF_CHANNEL_ADD_BITS) & HBM_BANK_GROUP_MASK;
+            UInt32 HBM_Bank    = ((temp >>  NUM_OF_CH_AND_BG_BITS ) & HBM_BANK_MASK);
+
+            //printf("temp=%d, HBM_Channel=%d, HB_Bank=%d, HBM_BankGroup=%d\n", temp, HBM_Channel, HBM_Bank, HBM_BankGroup);
+            if(ENABLE_CHANNEL_PARTITIONING){
+                write_bank_accessed = ((requester/memory_controllers_interleaving + HBM_FLAG*NUM_OF_CHANNELS) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
+                HBM_FLAG++;
+                if(HBM_FLAG == 2)
+                    HBM_FLAG = 0;
+            }
+            else{
+                write_bank_accessed = ((HBM_Channel) * BANK_GROUPS_PER_CHANNEL + HBM_BankGroup) * BANKS_PER_BG + HBM_Bank;
             }
         #endif
 
